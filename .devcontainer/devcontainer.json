@@ -5,7 +5,9 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
-		"ghcr.io/devcontainers/features/python:1": {},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11"
+		},
 		"ghcr.io/devcontainers-contrib/features/black:2": {},
 		"ghcr.io/devcontainers-contrib/features/coverage-py:2": {},
 		"ghcr.io/devcontainers-contrib/features/mypy:2": {},
@@ -17,12 +19,15 @@
 	},
 	"customizations": {
 		"extensions": [
-			"ms-python.vscode-pylance",
+			"ms-python.black-formatter",
+			"ms-python.pylint",
 			"ms-python.python",
+			"ms-python.vscode-pylance",
 			"alexcvzz.vscode-sqlite",
 			"donjayamanne.python-extension-pack",
 			"ms-python.black-formatter",
-			"littlefoxteam.vscode-python-test-adapter"
+			"littlefoxteam.vscode-python-test-adapter",
+			"ms-vscode.azurecli"
 		],
 	},
 	"mounts": [
@@ -34,8 +39,8 @@
 
 	// onstartcommand that installs lsd
 	"postCreateCommand": "curl -L https://github.com/lsd-rs/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb  -o lsd_0.23.1_amd64.deb && dpkg -i lsd_0.23.1_amd64.deb && rm lsd_0.23.1_amd64.deb",
-	"postStartCommand": "pip install --root-user-action=ignore -r requirements.txt",
+	"postStartCommand": "pip install --root-user-action=ignore -r requirements.txt; python -m http.server 8080",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [8080],
 }

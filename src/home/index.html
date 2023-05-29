@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Python Puzzle Quest</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.5/brython.min.js"></script>
@@ -10,18 +11,24 @@
             padding: 0;
             background-color: #f0f0f0;
         }
+
         #content {
             margin: 20px;
         }
     </style>
 </head>
-<body onload="brython()">
+
+<body onload="console.log('Brython is being loaded'); brython()">
     <div id="content">
         <h1>Welcome to Python Puzzle Quest!</h1>
         <p>Let's start with a simple Python code...</p>
+        <button id="mybutton">Click me!</button>
+        <script type="text/python3" src="../main.py"></script>
         <script type="text/python3">
-            print("Hello, Python Puzzle Quest!")
+            print("Hello world!")
         </script>
+
     </div>
 </body>
+
 </html>
